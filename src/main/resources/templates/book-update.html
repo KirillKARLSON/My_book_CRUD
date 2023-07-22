@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<meta charset="UTF-8">
+<title>Create user</title>
+</head>
+<body>
+<form action="#" th:action="@{/book-update}" th:object="${book}" method="post">
+    <label for="id">ID</label>
+    <input readonly type="number" th:field="*{id}" id="id" placeholder="ID">
+    <br/>
+    <label for="author">Author</label>
+    <input type="text" th:field="*{author}" id="author" placeholder="Author">
+    <br/>
+    <label for="book_name">Book name</label>
+    <input type="text" th:field="*{book_name}" id="book_name" placeholder="Book Name">
+    <br/>
+    <input type="submit" value="Update User">
+</form>
+</body>
+</html>
