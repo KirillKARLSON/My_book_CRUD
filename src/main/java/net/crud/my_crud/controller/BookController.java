@@ -8,7 +8,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestPart;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 @Controller
@@ -55,4 +58,11 @@ public class BookController {
         bookService.saveBook(book);
         return "redirect:/books";
     }
+
+    @PostMapping ("/books")
+    public Book create(@RequestPart("data") MultipartFile file) throws IOException {
+        return bookService.save(file.getOriginalFilename(), file.getContentType(),file.getBytes());
+    }
+
+
 }

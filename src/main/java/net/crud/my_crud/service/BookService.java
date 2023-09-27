@@ -33,4 +33,18 @@ public class BookService {
     public void deleteById(Long id){
         bookRepository.deleteById(id);
     }
+
+    public Book save(String fileName, String contentType, byte[] data) {
+        Book book = new Book();
+        book.setContentType(contentType);
+        book.setFileName(fileName);
+        book.setData(data);
+        bookRepository.save(book);
+        return book;
+    }
+
+
+
+
+
 }
