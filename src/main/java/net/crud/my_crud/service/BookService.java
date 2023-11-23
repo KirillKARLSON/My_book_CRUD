@@ -5,12 +5,13 @@ import net.crud.my_crud.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.*;
 
 @Service
 public class BookService {
 
 
+    @Autowired
     private final BookRepository bookRepository;
 
     @Autowired
@@ -21,6 +22,23 @@ public class BookService {
     public Book findById(Long id){
         return bookRepository.findById(id).orElse(null);
     }
+
+    public List <Book> findByGenre(String genre1){
+        List<Book> booksByGenreList = new ArrayList<>();
+        List<Book> allBooks = bookRepository.findAll();
+        for (Book book: allBooks){
+            if (book.getGenre() != null && book.getGenre().equals(genre1)){
+                booksByGenreList.add(book);
+            }
+        }
+        return booksByGenreList;
+    }
+
+    public List<String> allGenres(){
+        return bookRepository.getGenres();
+    }
+
+
 
     public List<Book> findAll(){
         return bookRepository.findAll();

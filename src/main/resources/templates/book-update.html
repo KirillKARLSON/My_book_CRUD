@@ -17,13 +17,16 @@
     <label for="fileName">File name</label>
     <input type="text" th:field="*{fileName}" id="fileName" placeholder="filename">
     <br/>
+    <label for="genre">Genre</label>
+    <input type="text" th:field="*{genre}" id="genre" placeholder="genre">
+    <br/>
     <label for="contentType">Content Type</label>
     <input type="text" th:field="*{contentType}" id="contentType" placeholder="Content Type">
     <br/>
     <label for="data">Text</label>
     <input type="text" th:field="*{data}" id="data" placeholder="Text">
     <br/>
-    <p><a href="/upload.html">Upload book</a></p>
+
     <input type="submit" value="Update Books">
 </form>
 </body>

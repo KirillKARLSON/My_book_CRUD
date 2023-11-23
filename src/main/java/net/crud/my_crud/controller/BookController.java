@@ -28,6 +28,22 @@ public class BookController {
         return "book-list";
     }
 
+    @GetMapping("/books/{genre}")
+    public String findBookByGenres(@PathVariable("genre") String genre, Model model){
+        List<Book> books = bookService.findByGenre(genre);
+        model.addAttribute("books", books);
+        return "book-list";
+    }
+
+    @GetMapping("/genres")
+    public String findGenres(Model model){
+        List<String> genres = bookService.allGenres();
+        model.addAttribute("genres", genres);
+        return "genre-list";
+    }
+
+
+
     @GetMapping ("/book-create")
     public String createBookForm(Book book){
         return "book-create";
@@ -60,8 +76,11 @@ public class BookController {
     }
 
     @PostMapping ("/books")
-    public Book create(@RequestPart("data") MultipartFile file) throws IOException {
-        return bookService.save(file.getOriginalFilename(), file.getContentType(),file.getBytes());
+    public String create(@RequestPart("data") MultipartFile file) throws IOException {
+
+        Book book = bookService.save(file.getOriginalFilename(), file.getContentType(),file.getBytes());
+
+        return "redirect:/books";
     }
 
 

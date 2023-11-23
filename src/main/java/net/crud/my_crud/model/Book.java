@@ -20,6 +20,9 @@ public class Book {
     @Column (name = "book_name")
     private String book_name;
 
+    @Column (name = "genre")
+    private String genre;
+
     @Column(name = "content_type")
     private String contentType;
 
